@@ -7,13 +7,13 @@ def main():
   # get input from input.txt
   input_file = open("input.txt", "r")
 
-  # counter starting at 0
+  # counter starting at 0 to keep track of increases
   counter = 0
 
   # define last value
   lastValue = None
 
-  #iterate through input file and keep track of current position 
+  #iterate through input file and keep track of increases 
   for line in input_file:
     if (lastValue is None):
       print(line + " No previous value") 
