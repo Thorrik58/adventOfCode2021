@@ -7,30 +7,20 @@ def main():
   # get input from input.txt
   input_file = open("input.txt", "r")
 
-  # counter starting at 0
-  counter = 0
-
-  # counter of increases
+  isFirstRun = True
   increaseCounter = 0
-
-  # define last value
-  lastValue = None
-
-  # lastSumValue set to None 
   lastSumValue = None
-
-  compareNextRun = False
 
   # create list to store values
   valuesFirst = []
   valuesSecond = []
-  valuesThird = []
 
   # iterate through input file and keep track of current position 
   for line in input_file:
-    # Case for first three runs, there is a smarter way to do this but let's do it this way for now
-    if (counter == 0):
+    # Case for first run, there is a smarter way to do this but let's do it this way for now
+    if (isFirstRun):
       valuesFirst.append(int(line))
+      isFirstRun = False
     else:
       valuesFirst.append(int(line))
       valuesSecond.append(int(line))
@@ -42,13 +32,12 @@ def main():
       else:
         print("Decreased")
       
-    # if every third run
+    # just to make sure we dont start summing up until we have 3 values in the list
     if (len(valuesFirst) == 3):
       lastSumValue = sum(valuesFirst)
       valuesFirst=valuesSecond
       valuesSecond=[int(line)]
 
-    counter += 1
   print("Number of increases: " + str(increaseCounter))
 
 if __name__ == '__main__':
